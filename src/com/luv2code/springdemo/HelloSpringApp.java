@@ -16,6 +16,9 @@ public class HelloSpringApp {
 		// Call methods on the beans
 		System.out.println(theCoach.getDailyWorkout());
 		
+		// Implicitly call methods on injected FortuneService
+		System.out.println(theCoach.getDailyFortune());
+		
 		// Close the context
 		context.close();
 

@@ -12,12 +12,14 @@ public class HelloSpringApp {
 		
 		// Retrieve a bean from container
 		Coach theCoach = context.getBean("myCoach", Coach.class);
+		Coach theCustomCoach = context.getBean("myCustomCoach", Coach.class);
 		
 		// Call methods on the beans
 		System.out.println(theCoach.getDailyWorkout());
 		
 		// Implicitly call methods on injected FortuneService
 		System.out.println(theCoach.getDailyFortune());
+		System.out.println("Random: " + theCustomCoach.getDailyFortune());
 		
 		// Close the context
 		context.close();

@@ -7,10 +7,6 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- Load the properties file -->
-	<context:property-placeholder
-		location="classpath:sport.properties" />
-
 	<!-- Define your beans here -->
 	<bean id="myLoggerConfig"
 		class="com.luv2code.springdemo.prefences.MyLoggerConfig"
@@ -23,28 +19,9 @@
 		class="com.luv2code.springdemo.coach.HappyFortuneService">
 	</bean>
 
-	<bean id="myCustomFortune"
-		class="com.luv2code.springdemo.coach.CustomFortuneService">
-	</bean>
-
 	<bean id="myCoach"
-		class="com.luv2code.springdemo.coach.TrackCoach">
+		class="com.luv2code.springdemo.coach.TrackCoach" scope="prototype">
 		<constructor-arg ref="myFortune" />
-	</bean>
-
-	<bean id="myCustomCoach" class="com.luv2code.springdemo.coach.BaseballCoach">
-		<constructor-arg ref="myCustomFortune" />
-	</bean>
-
-	<bean id="myCricketCoach"
-		class="com.luv2code.springdemo.coach.CricketCoach">
-		<!-- Setup setter injection -->
-		<property name="fortuneService" ref="myFortune" />
-
-		<!-- Injecting literal fields -->
-		<property name="emailAddress" value="${foo.email}" />
-		<property name="team" value="${foo.team}" />
-
 	</bean>
 
 </beans>
